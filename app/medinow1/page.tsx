@@ -16,13 +16,31 @@ function SplashScreen() {
   </main>;
 }
 
+function OnboardingScreen({ onContinue }: { onContinue: () => void }) {
+  return <main className="onboarding-screen" aria-label="MEDINOW introduction">
+    <img
+      className="onboarding-screen__image"
+      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-09-28%20at%206.00.50%20AM-cKjQg3wIWVvEMDQE4sAzHXUaoxTdK7.jpeg"
+      alt="Find nearby pharmacies onboarding screen"
+    />
+    <button className="onboarding-screen__skip" type="button" aria-label="Skip introduction" onClick={onContinue}>Skip</button>
+    <button className="onboarding-screen__continue" type="button" aria-label="Continue to MEDINOW home" onClick={onContinue}>Continue</button>
+  </main>;
+}
+
 export default function Medinow1Page() {
   const [showSplash, setShowSplash] = useState(true);
+  const [showOnboarding, setShowOnboarding] = useState(false);
 
   useEffect(() => {
-    const splashTimer = window.setTimeout(() => setShowSplash(false), 2200);
+    const splashTimer = window.setTimeout(() => {
+      setShowSplash(false);
+      setShowOnboarding(true);
+    }, 2200);
     return () => window.clearTimeout(splashTimer);
   }, []);
 
-  return showSplash ? <SplashScreen /> : <Dashboard />;
+  if (showSplash) return <SplashScreen />;
+  if (showOnboarding) return <OnboardingScreen onContinue={() => setShowOnboarding(false)} />;
+  return <Dashboard />;
 }
