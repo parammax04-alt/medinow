@@ -26,6 +26,48 @@ button { font: inherit; cursor: pointer; }
 @media (max-width: 370px) { .dashboard-content { padding-right: .55rem; padding-left: .55rem; }.dashboard-brand strong { font-size: 1.55rem; }.dashboard-visual { right: -.8rem; width: 8.5rem; }.quick-card { min-height: 8rem; }.quick-card strong { font-size: .58rem; }.quick-card small { font-size: .48rem; }.section-heading h2 { font-size: .8rem; }.section-heading p { font-size: .5rem; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
 
+/* Luxury direction: obsidian, champagne, and oxblood replace the clinical blue palette. */
+:root { --background: #0b0908; --foreground: #f7f0e5; }
+body { background: #0b0908; color: #f7f0e5; }
+.app-splash, .dashboard-screen, .find-screen, .availability-screen { color: #f7f0e5; background: radial-gradient(ellipse at 50% 8%, #7c2e241c, transparent 35%), radial-gradient(ellipse at 85% 86%, #d2a85f14, transparent 28%), linear-gradient(145deg, #090807 0%, #1a1110 54%, #080706 100%); }
+.app-splash::before, .app-splash::after { border-color: #d9b36a40; }
+.app-splash__glow { background: #b96f3638; }
+.app-splash__mark, .dashboard-visual { border-color: #d9b36a8c; background: radial-gradient(ellipse, #9a442f45, transparent 70%); box-shadow: 0 0 34px #b66d3850; }
+.app-splash__capsule, .visual-capsule { background: linear-gradient(90deg, #f8efe0 48%, #8f3f32 49%); box-shadow: 0 0 15px #d7a35c99; }
+.app-splash__cross, .visual-cross { color: #e3bb72; text-shadow: 0 0 14px #d19b4c; }
+.app-splash__tablet, .visual-tablet { background: #f5e6cd; box-shadow: 0 0 12px #d8aa64; }
+.app-splash__brand strong:last-child, .dashboard-brand strong span, .find-header > strong span, .find-hero h1 span { color: #d9ad65; }
+.app-splash__brand, .dashboard-brand strong, .find-header > strong { text-shadow: 0 0 20px #d19b4c44; }
+.app-splash__content p, .dashboard-brand small { color: #d8b77c; }
+.app-splash__content small { color: #a88967; }
+.app-splash__loader { background: #3d1b17; box-shadow: 0 0 12px #b66d3855; }
+.app-splash__loader span { background: #d7a35c; box-shadow: 0 0 12px #edc778; }
+.medicine-search, .find-search { border-color: #c9984e; color: #e1b66e; background: #211613cc; box-shadow: inset 0 1px #fff3dc33, 0 0 20px #9d4d3540; }
+.dashboard-panel, .find-results { border-color: #9e654b; background: linear-gradient(145deg, #291816d9, #120d0ce8); box-shadow: inset 0 1px #fff2dc26, 0 14px 30px #0008; }
+.quick-card, .category-card, .pharmacy-card, .saved-card, .find-result-card { border-color: #795041; color: #f7eee2; background: linear-gradient(145deg, #321d19d9, #160e0dd9); box-shadow: inset 0 1px #fff1da1c, 0 10px 24px #0006; }
+.quick-card:hover, .category-card:hover { border-color: #e1b66e; }
+.quick-card__icon, .section-heading > span, .pharmacy-card__icon, .saved-card__icon { color: #e0b56b; background: #4a241d; border-color: #b57b4e66; }
+.section-heading h2, .standalone-title, .find-section-heading h2, .find-results-heading h2 { color: #fff7ec; }
+.section-heading p, .quick-card small, .find-hero p { color: #c9ad91; }
+.section-actions button, .search-chips button, .find-results-heading button { border-color: #8b5d47; color: #f0ce94; background: #3a211bd9; }
+.section-actions button:hover, .search-chips button:hover { border-color: #e1b66e; background: #55291f; }
+.table-wrap, .table-head, .table-skeleton { border-color: #75483c; background: #241412; }
+.table-head { color: #e1b66e; background: #4a241d; }
+.table-skeleton { border-top-color: #5b352d; }
+.skeleton { background: linear-gradient(90deg, #4a241d, #8b4d38, #4a241d); background-size: 220% 100%; }
+.skeleton-circle { border-color: #c59554; background: #54281f; }
+.pharmacy-card > button, .panel-action, .find-result-card > button { color: #24130f; background: linear-gradient(105deg, #bd8141, #f0c878); box-shadow: 0 5px 16px #bd814155; }
+.find-section-heading button { color: #d7aa66; }
+.find-search input { color: #fff7eb; }
+.find-search input::placeholder { color: #b69b84; }
+.find-search i, .result-columns > div + div { background: #b2744c66; }
+.find-result-card > button { color: #24130f; }
+.visual-cross, .dashboard-icon, .find-icon, .pharmacy-detail .dashboard-icon { color: #d5a55e; }
+.find-header { border-bottom-color: #87594066; background: #150d0bd9; }
+.sort-select { border-color: #805543; color: #f0d2a4; background: #321b17; }
+.dashboard-icon, .find-screen svg { stroke: currentColor; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
 .find-screen { min-height: 100dvh; overflow-x: hidden; color: #edfaff; background: radial-gradient(ellipse at 80% 0%, #0754c94d, transparent 34%), radial-gradient(ellipse at 8% 48%, #0868bd2c, transparent 40%), linear-gradient(145deg, #020a2b, #031b56 57%, #020a2b); }
 .find-screen svg { width: 1.1rem; height: 1.1rem; flex: 0 0 auto; }
 .find-header { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; width: 100%; padding: .7rem .8rem; border-bottom: 1px solid #2dbfff55; background: #02143dc7; box-shadow: 0 8px 25px #0005; }.find-header button { display: grid; width: 2.25rem; height: 2.25rem; place-items: center; border: 0; color: #59e4ff; background: transparent; }.find-header button:last-child { justify-self: end; }.find-header > strong { color: #fff; font-size: 1.4rem; font-weight: 800; letter-spacing: -.06em; text-shadow: 0 0 14px #53e4ff55; }.find-header > strong span { color: #00c9ff; }

@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MEDINOW | Find. Order. Receive.",
-  description: "Premium pharmacy delivery, made simple.",
+  title: "MEDINOW | Elevated healthcare, delivered",
+  description: "A refined pharmacy experience for finding, ordering, and receiving care essentials.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
