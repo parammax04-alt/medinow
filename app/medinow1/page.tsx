@@ -16,31 +16,32 @@ function SplashScreen() {
   </main>;
 }
 
-function OnboardingScreen({ onContinue }: { onContinue: () => void }) {
+function OnboardingScreen({ step, onContinue }: { step: 1 | 2; onContinue: () => void }) {
+  const isMedicineSearch = step === 2;
   return <main className="onboarding-screen" aria-label="MEDINOW introduction">
     <img
       className="onboarding-screen__image"
-      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-09-28%20at%206.00.50%20AM-cKjQg3wIWVvEMDQE4sAzHXUaoxTdK7.jpeg"
-      alt="Find nearby pharmacies onboarding screen"
+      src={isMedicineSearch ? "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-09-28%20at%206.28.43%20AM-00fc31ZC36xeO8v6rccRktPlCD5zwG.jpeg" : "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-09-28%20at%206.00.50%20AM-cKjQg3wIWVvEMDQE4sAzHXUaoxTdK7.jpeg"}
+      alt={isMedicineSearch ? "Find medicine in stock onboarding screen" : "Find nearby pharmacies onboarding screen"}
     />
     <button className="onboarding-screen__skip" type="button" aria-label="Skip introduction" onClick={onContinue}>Skip</button>
-    <button className="onboarding-screen__continue" type="button" aria-label="Continue to MEDINOW home" onClick={onContinue}>Continue</button>
+    <button className="onboarding-screen__continue" type="button" aria-label={isMedicineSearch ? "Continue to MEDINOW home" : "Continue to next introduction"} onClick={onContinue}>Continue</button>
   </main>;
 }
 
 export default function Medinow1Page() {
   const [showSplash, setShowSplash] = useState(true);
-  const [showOnboarding, setShowOnboarding] = useState(false);
+  const [onboardingStep, setOnboardingStep] = useState<1 | 2 | 3>(1);
 
   useEffect(() => {
     const splashTimer = window.setTimeout(() => {
       setShowSplash(false);
-      setShowOnboarding(true);
     }, 2200);
     return () => window.clearTimeout(splashTimer);
   }, []);
 
   if (showSplash) return <SplashScreen />;
-  if (showOnboarding) return <OnboardingScreen onContinue={() => setShowOnboarding(false)} />;
+  if (onboardingStep === 1) return <OnboardingScreen step={1} onContinue={() => setOnboardingStep(2)} />;
+  if (onboardingStep === 2) return <OnboardingScreen step={2} onContinue={() => setOnboardingStep(3)} />;
   return <Dashboard />;
 }
